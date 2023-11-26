@@ -1,30 +1,100 @@
-// src/App.js
-import React, { useState } from 'react';
-import DogForm from './components/DogForm';
+import React, { useState, useEffect } from 'react';
 import DogImages from './components/DogImages';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  const [dogImages, setDogImages] = useState([]);
+const App = () => {
+  const [breeds, setBreeds] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
+  const [images, setImages] = useState([]);
+  const [breedsLoaded, setBreedsLoaded] = useState(false);
+  const [imageCount, setImageCount] = useState(0);
+  const [loadBreedsButtonVisible, setLoadBreedsButtonVisible] = useState(true);
 
-  const handleFormSubmit = (breed, imageCount) => {
-    // Fetch dog images based on the selected breed and count
-    fetch(`https://dog.ceo/api/breed/${breed}/images/random/${imageCount}`)
+  useEffect(() => {
+    if (breedsLoaded && selectedBreed) {
+      loadDogImages();
+    }
+  }, [breedsLoaded, selectedBreed]);
+
+  const loadBreeds = () => {
+    fetch('https://dog.ceo/api/breeds/list/all')
       .then(response => response.json())
       .then(data => {
-        setDogImages(data.message);
-        setSelectedBreed(breed);
+        const breedList = Object.keys(data.message);
+        setBreeds(breedList);
+        setBreedsLoaded(true);
+        setLoadBreedsButtonVisible(false);
       })
-      .catch(error => console.error('Error fetching images:', error));
+      .catch(error => console.error('Error fetching breeds:', error));
+  };
+
+  const handleBreedChange = (event) => {
+    setSelectedBreed(event.target.value);
+  };
+
+  const handleImageCountChange = (event) => {
+    const count = parseInt(event.target.value, 10);
+    setImageCount(count);
+  };
+
+  const loadDogImages = () => {
+    if (selectedBreed && imageCount > 0) {
+      fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random/${imageCount}`)
+        .then(response => response.json())
+        .then(data => {
+          setImages(data.message);
+        })
+        .catch(error => console.error('Error fetching images:', error));
+    }
   };
 
   return (
     <div className="container mt-3">
-      <DogForm onFormSubmit={handleFormSubmit} />
-      <DogImages images={dogImages} breed={selectedBreed} />
+      <h1>Dog Breed Viewer</h1>
+      {loadBreedsButtonVisible && (
+        <button className="btn btn-primary mb-3" onClick={loadBreeds}>
+          Load Breeds
+        </button>
+      )}
+      {breedsLoaded && (
+        <div>
+          <div className="form-group">
+            <label htmlFor="breedSelect">Select a Breed:</label>
+            <select
+              id="breedSelect"
+              className="form-control"
+              onChange={handleBreedChange}
+              value={selectedBreed}
+            >
+              <option value="">Select a breed</option>
+              {breeds.map(breed => (
+                <option key={breed} value={breed}>
+                  {breed}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageCount">Number of Images (1-100):</label>
+            <input
+              type="number"
+              id="imageCount"
+              className="form-control"
+              value={imageCount}
+              onChange={handleImageCountChange}
+              min="1"
+              max="100"
+            />
+          </div>
+          <button className="btn btn-primary mb-3" onClick={loadDogImages}>
+            Load Dog Images
+          </button>
+        </div>
+      )}
+      {images.length > 0 && (
+        <DogImages images={images} breed={selectedBreed} />
+      )}
     </div>
   );
-}
+};
 
 export default App;

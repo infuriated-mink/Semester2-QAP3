@@ -1,4 +1,3 @@
-// src/components/DogForm.js
 import React, { useState, useEffect } from 'react';
 import Dropdown from './Dropdown'; 
 
@@ -8,7 +7,6 @@ const DogForm = ({ onFormSubmit }) => {
   const [imageCount, setImageCount] = useState(1);
 
   useEffect(() => {
-    // Fetch dog breeds and populate the state
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(response => response.json())
       .then(data => {
