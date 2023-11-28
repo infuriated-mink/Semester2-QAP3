@@ -18,6 +18,8 @@
     border-color: #28a745;
     color: #ffffff;
     align-self: center;
+    margin-top: 15px;
+    padding-top: auto;
   }
   
   /* Button hover effect */

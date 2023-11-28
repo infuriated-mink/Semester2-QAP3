@@ -13,17 +13,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -38,26 +27,3 @@
 }
 
 
-.container {
-  width: 80%;
-  margin: auto;
-  height: 160px;
-  background-color: #eeeeee;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.d-flex {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.form-group {
-  flex: 1;
-  margin-right: 10px; 
-}

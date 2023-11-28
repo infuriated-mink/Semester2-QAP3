@@ -1,24 +1,16 @@
 .container {
     width: 80%;
+    height: 90px;
     margin: auto;
-    height: 160px;
     background-color: #eeeeee;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
+    padding: 0; 
+
   }
   
   .d-flex {
     display: flex;
-    /* justify-content: space-between; */
-    /* margin-left: 20px;
-    margin-right: 20px; */
   }
   
   .form-group {
     flex: 1;
-    /* margin-right: 10px;  */
   }
-  

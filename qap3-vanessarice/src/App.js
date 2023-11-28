@@ -49,54 +49,56 @@ const App = () => {
   };
 
   return (
-    <div className="container mt-3">
+    <div>
       <div className="header">
         <h1>Dog Breed Viewer</h1>
         <p>Explore and enjoy images of different dog breeds!</p>
       </div>
-      {loadBreedsButtonVisible && (
-        <button className="btn btn-primary mb-3" onClick={loadBreeds}>
-          Load Breeds
-        </button>
-      )}
-      {breedsLoaded && (
-        <div className="d-flex">
-          <div className="form-group">
-            <label htmlFor="breedSelect">Select a Breed:</label>
-            <select
-              id="breedSelect"
-              className="form-control" // Use Bootstrap form-control class
-              onChange={handleBreedChange}
-              value={selectedBreed}
-            >
-              <option value="">Select a breed</option>
-              {breeds.map(breed => (
-                <option key={breed} value={breed}>
-                  {breed}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group ml-3">
-            <label htmlFor="imageCount">Number of Images (1-100):</label>
-            <input
-              type="number"
-              id="imageCount"
-              className="form-control" // Use Bootstrap form-control class
-              value={imageCount}
-              onChange={handleImageCountChange}
-              min="1"
-              max="100"
-            />
-          </div>
-          <button className="btn btn-primary ml-3 mb-3" onClick={loadDogImages}>
-            Load Dog Images
+      <div className="container mt-3">
+        {loadBreedsButtonVisible && (
+          <button className="btn btn-primary mb-3" onClick={loadBreeds}>
+            Load Breeds
           </button>
-        </div>
-      )}
-      {images.length > 0 && (
-        <DogImages images={images} breed={selectedBreed} />
-      )}
+        )}
+        {breedsLoaded && (
+          <div className="d-flex">
+            <div className="form-group">
+              <label htmlFor="breedSelect">Select a Breed:</label>
+              <select
+                id="breedSelect"
+                className="form-control"
+                onChange={handleBreedChange}
+                value={selectedBreed}
+              >
+                <option value="">Select a breed</option>
+                {breeds.map(breed => (
+                  <option key={breed} value={breed}>
+                    {breed}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group ml-3">
+              <label htmlFor="imageCount">Number of Images (1-100):</label>
+              <input
+                type="number"
+                id="imageCount"
+                className="form-control"
+                value={imageCount}
+                onChange={handleImageCountChange}
+                min="1"
+                max="100"
+              />
+            </div>
+            <button className="btn btn-primary ml-3 mb-3" onClick={loadDogImages}>
+              Load Dog Images
+            </button>
+          </div>
+        )}
+        {images.length > 0 && (
+          <DogImages images={images} breed={selectedBreed} />
+        )}
+      </div>
     </div>
   );
 };
