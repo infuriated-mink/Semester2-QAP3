@@ -5,6 +5,7 @@ import './css/header.css';
 import './css/DropDown.css';
 import './css/DogImages.css';
 import './css/Button.css';
+import './css/FirstBox.css';
 
 
 const App = () => {
@@ -64,7 +65,7 @@ const App = () => {
             <label htmlFor="breedSelect">Select a Breed:</label>
             <select
               id="breedSelect"
-              className="form-control"
+              className="form-control" // Use Bootstrap form-control class
               onChange={handleBreedChange}
               value={selectedBreed}
             >
@@ -81,18 +82,16 @@ const App = () => {
             <input
               type="number"
               id="imageCount"
-              className="form-control"
+              className="form-control" // Use Bootstrap form-control class
               value={imageCount}
               onChange={handleImageCountChange}
               min="1"
               max="100"
             />
           </div>
-          <div className="btn-container ml-3">
-            <button className="btn btn-primary mb-3" onClick={loadDogImages}>
-              Load Dog Images
-            </button>
-          </div>
+          <button className="btn btn-primary ml-3 mb-3" onClick={loadDogImages}>
+            Load Dog Images
+          </button>
         </div>
       )}
       {images.length > 0 && (
