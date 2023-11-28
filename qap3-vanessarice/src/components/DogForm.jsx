@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import Dropdown from './Dropdown'; 
+import Dropdown from './DropDown'; 
 
 const DogForm = ({ onFormSubmit }) => {
   const [breeds, setBreeds] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
   const [imageCount, setImageCount] = useState(1);
 
-  useEffect(() => {
-    fetch('https://dog.ceo/api/breeds/list/all')
-      .then(response => response.json())
-      .then(data => {
-        const breedList = Object.keys(data.message);
-        setBreeds(breedList);
-      })
-      .catch(error => console.error('Error fetching breeds:', error));
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://dog.ceo/api/breeds/list/all')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const breedList = Object.keys(data.message);
+  //       setBreeds(breedList);
+  //     })
+  //     .catch(error => console.error('Error fetching breeds:', error));
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

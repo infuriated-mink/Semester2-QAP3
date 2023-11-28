@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import DogImages from './components/DogImages';
+import './App.css';
+import './css/header.css';
+import './css/DropDown.css';
+import './css/DogImages.css';
+import './css/Button.css';
+
 
 const App = () => {
   const [breeds, setBreeds] = useState([]);
@@ -8,12 +14,6 @@ const App = () => {
   const [breedsLoaded, setBreedsLoaded] = useState(false);
   const [imageCount, setImageCount] = useState(0);
   const [loadBreedsButtonVisible, setLoadBreedsButtonVisible] = useState(true);
-
-  useEffect(() => {
-    if (breedsLoaded && selectedBreed) {
-      loadDogImages();
-    }
-  }, [breedsLoaded, selectedBreed]);
 
   const loadBreeds = () => {
     fetch('https://dog.ceo/api/breeds/list/all')
@@ -49,14 +49,17 @@ const App = () => {
 
   return (
     <div className="container mt-3">
-      <h1>Dog Breed Viewer</h1>
+      <div className="header">
+        <h1>Dog Breed Viewer</h1>
+        <p>Explore and enjoy images of different dog breeds!</p>
+      </div>
       {loadBreedsButtonVisible && (
         <button className="btn btn-primary mb-3" onClick={loadBreeds}>
           Load Breeds
         </button>
       )}
       {breedsLoaded && (
-        <div>
+        <div className="d-flex">
           <div className="form-group">
             <label htmlFor="breedSelect">Select a Breed:</label>
             <select
@@ -73,7 +76,7 @@ const App = () => {
               ))}
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group ml-3">
             <label htmlFor="imageCount">Number of Images (1-100):</label>
             <input
               type="number"
@@ -85,9 +88,11 @@ const App = () => {
               max="100"
             />
           </div>
-          <button className="btn btn-primary mb-3" onClick={loadDogImages}>
-            Load Dog Images
-          </button>
+          <div className="btn-container ml-3">
+            <button className="btn btn-primary mb-3" onClick={loadDogImages}>
+              Load Dog Images
+            </button>
+          </div>
         </div>
       )}
       {images.length > 0 && (
