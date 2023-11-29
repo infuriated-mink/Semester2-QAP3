@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import DogImages from './components/DogImages';
 import './App.css';
 import './css/header.css';
@@ -54,14 +54,14 @@ const App = () => {
         <h1>Dog Breed Viewer</h1>
         <p>Explore and enjoy images of different dog breeds!</p>
       </div>
-      <div className="container mt-3">
+      <div className="container">
         {loadBreedsButtonVisible && (
           <button className="btn btn-primary mb-3" onClick={loadBreeds}>
             Load Breeds
           </button>
         )}
         {breedsLoaded && (
-          <div className="d-flex">
+          <div className="d-flex flex-column">
             <div className="form-group">
               <label htmlFor="breedSelect">Select a Breed:</label>
               <select
@@ -78,7 +78,7 @@ const App = () => {
                 ))}
               </select>
             </div>
-            <div className="form-group ml-3">
+            <div className="form-group">
               <label htmlFor="imageCount">Number of Images (1-100):</label>
               <input
                 type="number"

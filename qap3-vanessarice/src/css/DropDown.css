@@ -1,15 +1,13 @@
-.form-group {
+/* .form-group {
     margin-bottom: 1rem;
   }
-  
+ */
   /* Style the select dropdown */
   .form-control {
-    width: 150px; 
+    width: 150px;
   }
-  
+
   /* Style the number input */
   #imageCount {
-    width: 80px; 
+    width: 80px;
   }
-  
-  
