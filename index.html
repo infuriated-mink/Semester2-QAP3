@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="styles.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>Dog Breed Viewer</title>
-  </head>
-
-  <body>
+</head>
+<body>
     <div class="header1">
-      <div
-        class="container d-flex justify-content-center text-center pt-3 pb-2"
-      >
-        <div class="header">
-          <h1>Dog Breed Viewer</h1>
-          <p>Explore and enjoy images of different dog breeds!</p>
+        <div class="container d-flex justify-content-center text-center pt-3 pb-2">
+            <div class="header">
+                <h1>Dog Breed Viewer</h1>
+                <p>Explore and enjoy images of different dog breeds!</p>
+            </div>
         </div>
+    </div>
+
+    <div class="box1 pt-3 pb-3">
+      <div class="d-flex justify-content-center">
+          <button type="button" id="loadBreedsBtn" class="custom-button btn btn-primary">Load Breeds</button>
       </div>
     </div>
 
     <div class="box2">
-      <div class="container d-flex justify-content-center pt-3">
-        <div>
-          <div id="breedSection" style="display: none">
-            <label for="breedSelect">Select a Breed:</label>
-            <select id="breedSelect">
-              <option value="">Select a breed</option>
-            </select>
-
-            <label for="imageCount">Number of Images (1-100):</label>
-            <input type="number" id="imageCount" min="1" max="100" />
-
-            <button id="loadDogImagesBtn" class="custom-button btn btn-primary">
-              Load Dog Images
-            </button>
-          </div>
-        </div>
-      </div>
+        <form id="dogForm" style="display: none;">
+            <div class="form-row align-items-end d-flex justify-content-center">
+                <div class="form-group col-md-4">
+                    <label for="breedSelect">Select a Breed:</label>
+                    <select id="breedSelect" class="form-control">
+                        <option value="">Select a breed</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="imageCount">Number of Images (1-100):</label>
+                    <input type="number" id="imageCount" class="form-control" min="1" max="100" />
+                </div>
+                <div class="form-group col-md-2">
+                    <button type="button" id="loadDogImagesBtn" class="custom-button btn btn-primary btn-block">Load Dog Images</button>
+                </div>
+            </div>
+        </form>
     </div>
 
-    <div class="box1 pb-3">
-      <div class="container d-flex justify-content-center">
-        <button id="loadBreedsBtn" class="custom-button btn btn-primary">
-          Load Breeds
-        </button>
-      </div>
+    <div class="container mt-3">
+        <div id="dogImages" class="card-deck"></div>
     </div>
 
-    <div class="container rounded mx-auto custom-card-deck">
-      <div id="dogImages" class="card-deck"></div>
-    </div>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

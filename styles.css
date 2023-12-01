@@ -7,7 +7,7 @@
 .box1 {
     background-color: #F2F3F4;
     width: auto;
-    margin: 0;
+    margin-top: 0;
 }
 
 .box2 {
@@ -29,12 +29,7 @@
     background-color: #2980b9;
 }
 
-.custom-card-deck {
-    background-color: blue;
-}
-
 .card-deck {
-    background-color: red;
     height: fit-content;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -44,7 +39,6 @@
 .card-dog {
     min-width: 200px;
     min-height: 200px;
-    border:2px solid green;
     border-radius: 10px;
     background-size: cover;
 }
