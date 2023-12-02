@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadBreedsBtn = document.getElementById("loadBreedsBtn");
     const dogForm = document.getElementById("dogForm");
     const loadDogImagesBtn = document.getElementById("loadDogImagesBtn");
+    const dogImagesContainer = document.getElementById("dogImages");
 
     loadBreedsBtn.addEventListener("click", async () => {
         loadBreedsBtn.disabled = true;
@@ -31,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDogImagesBtn.addEventListener("click", async () => {
         const breedSelect = document.getElementById("breedSelect");
         const imageCountInput = document.getElementById("imageCount");
-        const dogImagesContainer = document.getElementById("dogImages");
 
         const selectedBreed = breedSelect.value;
         const imageCount = parseInt(imageCountInput.value, 10);
@@ -44,13 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     `https://dog.ceo/api/breed/${selectedBreed}/images/random/${imageCount}`
                 );
                 const data = await response.json();
-                dogImagesContainer.innerHTML = "";
+                dogImagesContainer.innerHTML = ""; 
 
                 data.message.forEach((imageUrl, index) => {
-                    const card = document.createElement("div");
-                    card.className = "card-dog m-2";
-                    card.style.backgroundImage = `url('${imageUrl}')`;
-                    dogImagesContainer.appendChild(card);
+                    const img = document.createElement("img");
+                    img.className = "img-dog m-2";
+                    img.src = imageUrl;
+                    img.alt = `Dog ${index + 1}`; 
+                    dogImagesContainer.appendChild(img);
                 });
             } catch (error) {
                 console.error("Error fetching images:", error);

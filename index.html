@@ -9,44 +9,51 @@
 </head>
 <body>
     <div class="header1">
-        <div class="container d-flex justify-content-center text-center pt-3 pb-2">
-            <div class="header">
+        <header class="header">
+            <div class="container d-flex justify-content-center text-center pt-3 pb-2">
                 <h1>Dog Breed Viewer</h1>
+            </div>
+            <div class="container d-flex justify-content-center text-center pb-2">
                 <p>Explore and enjoy images of different dog breeds!</p>
+            </div>
+        </header>
+    </div>
+
+    <div class="box1 pt-3 pb-3">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <button type="button" id="loadBreedsBtn" class="custom-button btn btn-primary">Load Breeds</button>
             </div>
         </div>
     </div>
 
-    <div class="box1 pt-3 pb-3">
-      <div class="d-flex justify-content-center">
-          <button type="button" id="loadBreedsBtn" class="custom-button btn btn-primary">Load Breeds</button>
-      </div>
-    </div>
-
     <div class="box2">
         <form id="dogForm" style="display: none;">
-            <div class="form-row align-items-end d-flex justify-content-center">
-                <div class="form-group col-md-4">
-                    <label for="breedSelect">Select a Breed:</label>
-                    <select id="breedSelect" class="form-control">
-                        <option value="">Select a breed</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="imageCount">Number of Images (1-100):</label>
-                    <input type="number" id="imageCount" class="form-control" min="1" max="100" />
-                </div>
-                <div class="form-group col-md-2">
-                    <button type="button" id="loadDogImagesBtn" class="custom-button btn btn-primary btn-block">Load Dog Images</button>
+            <div class="container form-container">
+                <div class="form-row align-items-end d-flex justify-content-center">
+                    <div class="form-group col-md-4">
+                        <label for="breedSelect">Select a Breed:</label>
+                        <select id="breedSelect" class="form-control">
+                            <option value="">Select a breed</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="imageCount">Number of Images (1-100):</label>
+                        <input type="number" id="imageCount" class="form-control" min="1" max="100" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button type="button" id="loadDogImagesBtn" class="custom-button btn btn-primary btn-block">Load Dog Images</button>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
 
     <div class="container mt-3">
-        <div id="dogImages" class="card-deck"></div>
+        <div id="dogImages" class="card-deck">
+            <!-- Dog images will be directly inserted here using <img> tags -->
+        </div>
     </div>
-
 
     <script src="script.js"></script>
 </body>
